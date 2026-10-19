@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Our six</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF1F6;--surface:#FFFFFF;--ink:#1E2433;--muted:#5B6478;--line:#D5DAE3;--soft:#E4E9F1;--focus:#0B8CE9;color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151C;--surface:#1B2030;--ink:#E8ECF4;--muted:#9AA3B5;--line:#2C3346;--soft:#232A3B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151C;--surface:#1B2030;--ink:#E8ECF4;--muted:#9AA3B5;--line:#2C3346;--soft:#232A3B;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,.big{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;font-weight:700;letter-spacing:-.01em;margin:0}
+h1{font-size:2.4rem;line-height:1.05}
+h2{font-size:1.35rem;margin-bottom:.9rem}
+main{max-width:1000px;margin:0 auto;padding:1.5rem 1rem 4rem}
+section{margin-top:2.5rem}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.muted{color:var(--muted)}
+.small{font-size:.875rem}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:1.75rem;align-items:center}
+.hero p{margin:.5rem 0 0;font-size:1.1rem}
+#ring{width:200px;height:200px;max-width:100%}
+.dot{transform-box:fill-box;transform-origin:center;transition:opacity .4s}
+@media (prefers-reduced-motion:no-preference){.dot.lit{animation:breathe 2.8s ease-in-out infinite}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.9rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem;border-top:6px solid var(--c)}
+.card.mine{box-shadow:0 0 0 2px var(--c)}
+.who{display:flex;align-items:center;gap:.6rem}
+.who .mood{font-size:1.9rem;line-height:1}
+.who b{font-size:1.1rem}
+.chip{display:inline-block;padding:.1rem .6rem;border-radius:999px;font-size:.8rem;font-weight:600}
+.s-free{background:#30A46C22;color:#1E7A4E}.s-maybe{background:#F5A52426;color:#9A6200}.s-busy{background:#E5484D1F;color:#B4282D}
+:root[data-theme="dark"] .s-free,:root[data-theme="dark"] .s-maybe,:root[data-theme="dark"] .s-busy{filter:brightness(1.6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s-free,:root:not([data-theme="light"]) .s-maybe,:root:not([data-theme="light"]) .s-busy{filter:brightness(1.6)}}
+.note{margin:.6rem 0 0;min-height:1.4em}
+.seg{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.7rem}
+.seg button,.btn{border:1px solid var(--line);background:var(--soft);border-radius:8px;padding:.35rem .7rem}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.moods button{font-size:1.25rem;padding:.15rem .4rem;line-height:1.3}
+.moods button[aria-pressed="true"]{background:var(--soft);border-color:var(--ink);color:inherit;box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.primary{background:var(--ink);color:var(--surface);border-color:var(--ink);font-weight:600}
+input[type=text],input[type=datetime-local],select{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:.45rem .6rem}
+label{display:block;font-size:.875rem;color:var(--muted);margin-top:.6rem}
+details{margin-top:.8rem}
+summary{cursor:pointer;color:var(--muted);font-size:.875rem}
+.row{display:flex;gap:.5rem;align-items:end;flex-wrap:wrap}
+.row>*{flex:1 1 140px}
+.colors{display:flex;gap:.45rem;margin-top:.35rem;flex-wrap:wrap}
+.colors button{width:34px;height:34px;border-radius:50%;border:3px solid transparent;background:var(--c)}
+.colors button[aria-pressed="true"]{border-color:var(--ink)}
+.colors button:disabled{opacity:.18;cursor:not-allowed}
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:.9rem}
+.big{font-size:3rem;line-height:1}
+.unit{font-size:1rem;color:var(--muted);font-family:Figtree,sans-serif;font-weight:500;margin:0 .5rem 0 .15rem}
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{display:flex;justify-content:space-between;gap:.6rem;align-items:center;padding:.55rem 0;border-top:1px solid var(--line)}
+ul.plain li:first-child{border-top:0}
+.x{border:0;background:none;color:var(--muted);font-size:1.1rem;padding:0 .3rem}
+.bday-today{font-weight:600}
+.gridwrap{overflow-x:auto}
+table.free{border-collapse:separate;border-spacing:4px;min-width:640px}
+table.free th{font-weight:500;font-size:.8rem;color:var(--muted);text-align:center;padding:.15rem}
+table.free th.name{text-align:left;padding-right:.5rem;color:var(--ink);white-space:nowrap}
+table.free th.all{color:var(--ink);background:var(--soft);border-radius:8px}
+table.free th button{border:0;background:none;color:inherit;padding:0;font:inherit}
+.cell{width:34px;height:30px;border-radius:7px;background:var(--soft);border:1px solid var(--line);display:block}
+.cell.on{background:var(--c);border-color:var(--c)}
+button.cell{padding:0}
+.notice{padding:1rem;border-radius:12px;background:var(--soft);margin-top:1.5rem}
+#toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:.6rem 1rem;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;max-width:90vw}
+#toast.show{opacity:1}
+@media (max-width:700px){.hero{grid-template-columns:1fr;justify-items:start}.two{grid-template-columns:1fr}h1{font-size:2rem}#ring{width:170px;height:170px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <svg id="ring" viewBox="0 0 220 220" aria-label="Who is free right now"></svg>
+    <div>
+      <h1>Our six</h1>
+      <p id="summary" class="muted">Loading the group…</p>
+    </div>
+  </div>
+
+  <div id="notice"></div>
+  <div id="join"></div>
+
+  <section>
+    <h2>How everyone’s doing</h2>
+    <div id="cards" class="cards"></div>
+  </section>
+
+  <section class="two">
+    <div>
+      <h2>Next meetup</h2>
+      <div class="panel" id="meetup"></div>
+    </div>
+    <div>
+      <h2>Birthdays</h2>
+      <div class="panel"><ul class="plain" id="bdays"></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who’s free when</h2>
+    <p class="muted small" style="margin-top:-.5rem">Tap your own row to mark the days you’re free. Days where everyone is free are highlighted; tap one to plan a meetup.</p>
+    <div class="panel gridwrap" id="grid"></div>
+  </section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+<script>
+// ▼▼▼ PASTE YOUR FIREBASE CONFIG HERE (step 2 of the guide) ▼▼▼
+const firebaseConfig = {
+  apiKey: "PASTE_HERE",
+  authDomain: "PASTE_HERE",
+  projectId: "PASTE_HERE",
+  storageBucket: "PASTE_HERE",
+  messagingSenderId: "PASTE_HERE",
+  appId: "PASTE_HERE"
+};
+// ▲▲▲ nothing else needs changing ▲▲▲
+
+const PALETTE=[["Cherry","#E5484D"],["Amber","#F5A524"],["Mint","#30A46C"],["Sky","#0B8CE9"],["Violet","#8E4EC6"],["Rose","#E93D82"]];
+const MOODS=["😄","🙂","😐","😔","😴","🤒","🥳","😤"];
+const STATUS={free:"Free",maybe:"Maybe",busy:"Busy"};
+let db=null,auth=null,me=null,myName="",canWrite=true,denied=false,unsubs=[],friends={},meetups=[],selColor=null,draftDate="";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const ymd=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const today0=()=>{const d=new Date();d.setHours(0,0,0,0);return d};
+function toast(t){const el=$("toast");el.textContent=t;el.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("show"),2600)}
+function ordered(){return Object.entries(friends).sort((a,b)=>(a[1].joinedAt||0)-(b[1].joinedAt||0))}
+function ago(ms){if(!ms)return"";const m=Math.round((Date.now()-ms)/60000);if(m<1)return"just now";if(m<60)return m+" min ago";const h=Math.round(m/60);if(h<24)return h+" h ago";const d=Math.round(h/24);return d===1?"yesterday":d+" days ago"}
+
+async function write(fn,ok){
+  if(!canWrite){toast("You can only view this page.");return}
+  try{await fn();if(ok)toast(ok)}
+  catch(e){
+    if(e&&e.code==="permission-denied"){canWrite=false;renderAll();toast("This Google account isn’t on the friends list.")}
+    else if(e&&e.code==="unavailable"){setTimeout(()=>fn().catch(()=>toast("Couldn’t save. Check your connection and try again.")),600+Math.random()*600)}
+    else toast("Couldn’t save. Try again in a moment.")
+  }
+}
+const updateMe=(data,ok)=>write(()=>db.doc("friends/"+me).update({...data,updatedAt:Date.now()}),ok);
+
+function renderRing(){
+  const list=ordered(),cx=110,cy=110,R=78;let s="";
+  for(let i=0;i<6;i++){
+    const a=-Math.PI/2+i*Math.PI/3,x=cx+R*Math.cos(a),y=cy+R*Math.sin(a),f=list[i];
+    if(!f){s+=`<circle cx="${x}" cy="${y}" r="20" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 4"/>`;continue}
+    const d=f[1],st=d.status||"busy",op=st==="free"?1:st==="maybe"?.55:.2;
+    const glow=st==="free"?`style="filter:drop-shadow(0 0 10px ${d.color})"`:"";
+    s+=`<circle class="dot ${st==="free"?"lit":""}" cx="${x}" cy="${y}" r="22" fill="${d.color}" opacity="${op}" ${glow}><title>${esc(d.name)}: ${STATUS[st]}</title></circle>`;
+    s+=`<text x="${x}" y="${y+6}" text-anchor="middle" font-size="18" aria-hidden="true">${d.mood||""}</text>`;
+  }
+  const free=list.filter(f=>f[1].status==="free").length;
+  s+=`<text x="110" y="112" text-anchor="middle" fill="var(--ink)" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="34">${free}</text><text x="110" y="134" text-anchor="middle" fill="var(--muted)" font-size="13" font-family="Figtree, sans-serif">free now</text>`;
+  $("ring").innerHTML=s;
+  const n=list.length;
+  $("summary").textContent=n===0?"Nobody has joined yet. Be the first!":`${free} of ${n} ${n===1?"friend":"friends"} free right now.`+(n<6?` ${6-n} ${6-n===1?"spot":"spots"} left to join.`:"");
+}
+
+function colorPicker(current){
+  const taken=new Set(ordered().filter(f=>f[0]!==me).map(f=>f[1].color));
+  return `<div class="colors" role="group" aria-label="Your color">`+PALETTE.map(([n,c])=>`<button type="button" data-color="${c}" style="--c:${c}" aria-label="${n}" aria-pressed="${c===current}" ${taken.has(c)?"disabled":""}></button>`).join("")+`</div>`;
+}
+function bindColors(root){root.querySelectorAll("[data-color]").forEach(b=>b.onclick=()=>{selColor=b.dataset.color;root.querySelectorAll("[data-color]").forEach(x=>x.setAttribute("aria-pressed",x===b))})}
+function bdayInputs(val){
+  const [m,d]=(val||"-").split("-");
+  const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  return `<div class="row"><div><label for="bd-d">Birthday day</label><select id="bd-d"><option value="">–</option>${Array.from({length:31},(_,i)=>`<option ${+d===i+1?"selected":""}>${i+1}</option>`).join("")}</select></div><div><label for="bd-m">Month</label><select id="bd-m"><option value="">–</option>${months.map((n,i)=>`<option value="${i+1}" ${+m===i+1?"selected":""}>${n}</option>`).join("")}</select></div></div>`;
+}
+const readBday=()=>{const d=$("bd-d").value,m=$("bd-m").value;return d&&m?pad(m)+"-"+pad(d):""};
+
+async function renderJoin(){
+  const el=$("join");
+  if(!db||!me||denied||!canWrite||friends[me]||ordered().length>=6){el.innerHTML="";return}
+  if(el.dataset.open)return;
+  el.dataset.open="1";
+  const suggested=(myName||"").split(" ")[0];
+  const free=PALETTE.find(([,c])=>!ordered().some(f=>f[1].color===c));selColor=free?free[1]:null;
+  el.innerHTML=`<section class="panel"><h2>Join the group</h2><p class="muted" style="margin-top:-.5rem">Pick a name and your color. Your color is how friends will spot you.</p>
+  <label for="j-name">Name</label><input type="text" id="j-name" maxlength="24" value="${esc(suggested)}">
+  <label>Color</label>${colorPicker(selColor)}${bdayInputs("")}
+  <p><button class="btn primary" id="j-go">Join</button></p></section>`;
+  bindColors(el);
+  $("j-go").onclick=()=>{
+    const name=$("j-name").value.trim();
+    if(!name){toast("Add your name first.");return}
+    if(!selColor){toast("Pick a color first.");return}
+    write(()=>db.doc("friends/"+me).set({name,color:selColor,birthday:readBday(),status:"free",mood:"🙂",note:"",free:[],joinedAt:Date.now(),updatedAt:Date.now()}),"Welcome to the group!").then(()=>{delete el.dataset.open});
+  };
+}
+
+function renderCards(){
+  const list=ordered();
+  if(!list.length){$("cards").innerHTML=`<p class="muted">Statuses will show up here once friends join.</p>`;return}
+  $("cards").innerHTML=list.map(([id,d])=>{
+    const mine=id===me&&canWrite,st=d.status||"busy";
+    let h=`<article class="card ${id===me?"mine":""}" style="--c:${d.color}"><div class="who"><span class="mood" aria-hidden="true">${d.mood||"🙂"}</span><div><b>${esc(d.name)}${id===me?" (you)":""}</b><br><span class="chip s-${st}">${STATUS[st]}</span> <span class="muted small">${ago(d.updatedAt)}</span></div></div>`;
+    if(!mine)return h+`<p class="note">${esc(d.note)||'<span class="muted">No note</span>'}</p></article>`;
+    h+=`<div class="seg" role="group" aria-label="Your status">${Object.entries(STATUS).map(([k,v])=>`<button data-status="${k}" aria-pressed="${k===st}">${v}</button>`).join("")}</div>`;
+    h+=`<div class="seg moods" role="group" aria-label="Your mood">${MOODS.map(m=>`<button data-mood="${m}" aria-pressed="${m===d.mood}">${m}</button>`).join("")}</div>`;
+    h+=`<label for="my-note">Note for the group</label><input type="text" id="my-note" maxlength="80" placeholder="Exams all week, call me Sunday" value="${esc(d.note)}">`;
+    h+=`<details><summary>Edit name, color or birthday</summary><label for="e-name">Name</label><input type="text" id="e-name" maxlength="24" value="${esc(d.name)}"><label>Color</label><div id="e-colors">${colorPicker(d.color)}</div>${bdayInputs(d.birthday)}<p><button class="btn primary" id="e-save">Save changes</button> <button class="btn" id="e-leave">Leave group</button></p></details>`;
+    return h+`</article>`;
+  }).join("");
+  const card=document.querySelector(".card.mine");
+  if(!card||!canWrite||!friends[me])return;
+  card.querySelectorAll("[data-status]").forEach(b=>b.onclick=()=>updateMe({status:b.dataset.status}));
+  card.querySelectorAll("[data-mood]").forEach(b=>b.onclick=()=>updateMe({mood:b.dataset.mood}));
+  const note=$("my-note");
+  const saveNote=()=>{if(note.value.trim()!==(friends[me].note||""))updateMe({note:note.value.trim()},"Note saved")};
+  note.onkeydown=e=>{if(e.key==="Enter")note.blur()};note.onblur=saveNote;
+  selColor=friends[me].color;bindColors($("e-colors"));
+  $("e-save").onclick=()=>{const name=$("e-name").value.trim();if(!name){toast("Add your name first.");return}updateMe({name,color:selColor,birthday:readBday()},"Changes saved")};
+  $("e-leave").onclick=()=>{if(confirm("Leave the group? Your status and free days will be removed."))write(()=>db.doc("friends/"+me).delete(),"You left the group")};
+}
+
+function countdown(ms){
+  if(ms<=0)return`<span class="big">Now!</span>`;
+  const m=Math.floor(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mi=m%60;
+  return d>0?`<span class="big">${d}</span><span class="unit">${d===1?"day":"days"}</span><span class="big">${h}</span><span class="unit">h</span>`:`<span class="big">${h}</span><span class="unit">h</span><span class="big">${mi}</span><span class="unit">min</span>`;
+}
+const fmtWhen=s=>new Date(s).toLocaleString(undefined,{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+
+function renderMeetup(){
+  const now=Date.now(),up=meetups.filter(m=>new Date(m.when).getTime()>now-3*3600000).sort((a,b)=>new Date(a.when)-new Date(b.when));
+  const next=up[0];
+  let h=next?`<div>${countdown(new Date(next.when).getTime()-now)}</div><p style="margin:.4rem 0 0"><b>${esc(next.title)}</b><br><span class="muted">${fmtWhen(next.when)}${next.place?", "+esc(next.place):""}</span></p>`:`<p class="muted" style="margin:0">No meetup planned yet. Add one below.</p>`;
+  if(up.length>1)h+=`<ul class="plain" style="margin-top:.8rem">${up.slice(1).map(m=>`<li><span>${esc(m.title)} <span class="muted small">${fmtWhen(m.when)}</span></span>${canWrite?`<button class="x" data-del="${m.id}" aria-label="Delete ${esc(m.title)}">×</button>`:""}</li>`).join("")}</ul>`;
+  if(next&&canWrite)h+=`<p class="small" style="margin:.5rem 0 0"><button class="btn" data-del="${next.id}">Cancel this meetup</button></p>`;
+  if(canWrite&&db)h+=`<details ${draftDate?"open":""}><summary>Plan a meetup</summary><label for="m-title">What</label><input type="text" id="m-title" maxlength="60" placeholder="Christmas dinner"><label for="m-when">When</label><input type="datetime-local" id="m-when" value="${draftDate}"><label for="m-place">Where (optional)</label><input type="text" id="m-place" maxlength="60"><p><button class="btn primary" id="m-add">Add meetup</button></p></details>`;
+  const box=$("meetup"),open=box.querySelector("details[open]")&&!draftDate,keep=open?{t:$("m-title").value,w:$("m-when").value,p:$("m-place").value}:null;
+  box.innerHTML=h;
+  if(keep){box.querySelector("details").open=true;$("m-title").value=keep.t;$("m-when").value=keep.w;$("m-place").value=keep.p}
+  box.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{if(confirm("Delete this meetup?"))write(()=>db.doc("meetups/"+b.dataset.del).delete(),"Meetup deleted")});
+  const add=$("m-add");
+  if(add)add.onclick=()=>{const title=$("m-title").value.trim(),when=$("m-when").value,place=$("m-place").value.trim();
+    if(!title||!when){toast("Add what and when first.");return}
+    draftDate="";write(()=>db.collection("meetups").add({title,when,place,by:me,createdAt:Date.now()}),"Meetup added")};
+  if(draftDate){$("m-title").focus();draftDate=""}
+}
+
+function renderBdays(){
+  const t=today0(),list=ordered().filter(f=>f[1].birthday).map(([id,d])=>{
+    const [m,dd]=d.birthday.split("-").map(Number);let n=new Date(t.getFullYear(),m-1,dd);if(n<t)n=new Date(t.getFullYear()+1,m-1,dd);
+    return{d,days:Math.round((n-t)/86400000),date:n}}).sort((a,b)=>a.days-b.days);
+  $("bdays").innerHTML=list.length?list.map(({d,days,date})=>`<li class="${days===0?"bday-today":""}"><span><span style="color:${d.color}" aria-hidden="true">●</span> ${esc(d.name)} <span class="muted small">${date.toLocaleDateString(undefined,{day:"numeric",month:"long"})}</span></span><span>${days===0?"Today! 🎂":days===1?"Tomorrow":"in "+days+" days"}</span></li>`).join(""):`<li class="muted">Add your birthday in your card to see the countdowns.</li>`;
+}
+
+function renderGrid(){
+  const list=ordered(),t=today0(),days=Array.from({length:14},(_,i)=>{const d=new Date(t);d.setDate(t.getDate()+i);return d});
+  if(!list.length){$("grid").innerHTML=`<p class="muted" style="margin:0">The calendar appears once friends join.</p>`;return}
+  const all=days.map(d=>list.length>1&&list.every(f=>(f[1].free||[]).includes(ymd(d))));
+  let h=`<table class="free"><thead><tr><th></th>${days.map((d,i)=>{const lab=`${d.toLocaleDateString(undefined,{weekday:"short"})}<br>${d.getDate()}`;return all[i]&&canWrite?`<th class="all"><button data-plan="${ymd(d)}" aria-label="Everyone free ${d.toDateString()}. Plan a meetup">${lab}<br>★</button></th>`:`<th class="${all[i]?"all":""}">${lab}${all[i]?"<br>★":""}</th>`}).join("")}</tr></thead><tbody>`;
+  for(const [id,d] of list){
+    const set=new Set(d.free||[]),mine=id===me&&canWrite;
+    h+=`<tr><th class="name" scope="row">${esc(d.name)}</th>${days.map(x=>{const k=ymd(x),on=set.has(k);return`<td>${mine?`<button class="cell ${on?"on":""}" style="--c:${d.color}" data-day="${k}" aria-pressed="${on}" aria-label="Free on ${x.toDateString()}"></button>`:`<span class="cell ${on?"on":""}" style="--c:${d.color}" ${on?`title="Free"`:""}></span>`}</td>`}).join("")}</tr>`;
+  }
+  $("grid").innerHTML=h+`</tbody></table>`;
+  $("grid").querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{
+    const k=b.dataset.day,cut=ymd(today0()),cur=new Set((friends[me].free||[]).filter(x=>x>=cut));
+    cur.has(k)?cur.delete(k):cur.add(k);updateMe({free:[...cur].sort()});
+  });
+  $("grid").querySelectorAll("[data-plan]").forEach(b=>b.onclick=()=>{draftDate=b.dataset.plan+"T18:00";renderMeetup();$("meetup").scrollIntoView({behavior:"smooth",block:"center"})});
+}
+
+function renderAll(){
+  renderRing();renderJoin();
+  const active=document.activeElement&&document.activeElement.id==="my-note";
+  if(!active)renderCards();
+  renderMeetup();renderBdays();renderGrid();
+  const n=$("notice");
+  if(!auth){n.innerHTML=`<div class="notice">The page isn’t connected to its database yet. Paste the Firebase config into the file (see the setup guide).</div>`;return}
+  if(!me){n.innerHTML=`<div class="notice"><p style="margin-top:0">Sign in with your Google account to see how everyone’s doing.</p><button class="btn primary" id="signin">Sign in with Google</button></div>`;$("signin").onclick=signIn;return}
+  if(denied){n.innerHTML=`<div class="notice"><p style="margin-top:0">This Google account isn’t one of the six. Ask whoever made the page to add your email, or try another account.</p><button class="btn" id="signout">Sign out</button></div>`;$("signout").onclick=()=>auth.signOut();return}
+  n.innerHTML=`<p class="muted small" style="margin-top:1rem">Signed in as ${esc(myName)}. <button class="btn" id="signout" style="padding:.15rem .5rem">Sign out</button></p>`;$("signout").onclick=()=>auth.signOut();
+}
+function signIn(){auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(e=>{if(e.code!=="auth/popup-closed-by-user"&&e.code!=="auth/cancelled-popup-request")toast("Sign-in failed: "+(e.message||e.code))})}
+
+renderAll();
+try{
+  if(firebaseConfig.apiKey==="PASTE_HERE")throw new Error("no config");
+  firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
+}catch(e){auth=null;db=null;$("summary").textContent="Setup isn’t finished yet.";renderAll()}
+if(auth)auth.onAuthStateChanged(u=>{
+  unsubs.forEach(f=>f());unsubs=[];friends={};meetups=[];denied=false;
+  me=u?u.uid:null;myName=u?(u.displayName||u.email||""):"";canWrite=!!u;
+  $("summary").textContent=u?"Loading the group…":"Sign in to see the group.";
+  renderAll();
+  if(!u)return;
+  const fail=e=>{if(e.code==="permission-denied"){denied=true;canWrite=false;$("summary").textContent="This account isn’t on the list.";renderAll()}};
+  unsubs.push(db.collection("friends").onSnapshot(s=>{friends={};s.docs.forEach(d=>friends[d.id]=d.data());renderAll()},fail));
+  unsubs.push(db.collection("meetups").onSnapshot(s=>{meetups=s.docs.map(d=>({id:d.id,...d.data()}));renderMeetup()},fail));
+});
+setInterval(()=>{if(me&&!document.querySelector("#meetup details[open]"))renderMeetup()},30000);
+</script>
+</body>
+</html>
